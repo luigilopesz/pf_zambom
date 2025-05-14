@@ -45,9 +45,7 @@ jobs:
         username: "ubuntu"
         key: ${{ secrets.KEY_TEST }}
         port: 22
-        script: >
-          docker stop pf_zambom || true &&
-          docker rm --force pf_zambom || true &&
-          docker run -d -p 8080:8080 -e mongodb_string_pf=${{ secrets.mongodb_string_pf }} --name pf_zambom --network=rede luigilopesz/pf_zambom:${{ github.sha }}
+        script: docker stop pf_zambom || true && docker rm --force pf_zambom || true && docker run -d -p 8080:8080 -e mongodb_string_pf=${{ secrets.mongodb_string_pf }} --name pf_zambom --network=rede luigilopesz/pf_zambom:${{ github.sha }}
+
 
 
