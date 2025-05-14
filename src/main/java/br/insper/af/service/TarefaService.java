@@ -8,7 +8,6 @@ import br.insper.af.repository.TarefaRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class TarefaService {
@@ -17,7 +16,6 @@ public class TarefaService {
     private TarefaRepository tarefaRepository;
 
     public Tarefa save(Tarefa tarefa) {
-        tarefa.setId(UUID.randomUUID().toString());
         return tarefaRepository.save(tarefa);
     }
 
