@@ -15,7 +15,7 @@ public class Tarefa {
     private String titulo;
     private String descricao;
     private String prioridade;
-    private String emailUsuarioCriador; // Armazena o e-mail do usuário que criou
+    private String email; // Armazena o e-mail do usuário que criou
 
     
 }
