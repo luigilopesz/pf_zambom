@@ -13,7 +13,7 @@
   </parent>
 
   <groupId>br.insper</groupId>
-  <artifactId>af</artifactId>
+  <artifactId>pf_zambom</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>af</name>
   <description>Demo project for Spring Boot</description>
