@@ -19,12 +19,12 @@ public class TarefaController {
     @Autowired
     private TarefaService tarefaService;
 
-    @GetMapping("/tarefa")
+    @GetMapping()
     public List<Tarefa> getTarefas() {
         return tarefaService.list();
     }
 
-    @PostMapping("/tarefa")
+    @PostMapping()
     public Tarefa saveTarefa(@AuthenticationPrincipal Jwt jwt, @RequestBody Tarefa tarefa) {
         List<String> roles = jwt.getClaimAsStringList("https://musica-insper.com/roles");
         String email = jwt.getClaimAsString("https://musica-insper.com/email");
@@ -37,7 +37,7 @@ public class TarefaController {
         return tarefaService.save(tarefa);
     }
 
-    @DeleteMapping("/tarefa/{id}")
+    @DeleteMapping("/{id}")
     public void deleteTarefa(@AuthenticationPrincipal Jwt jwt, @PathVariable String id) {
         List<String> roles = jwt.getClaimAsStringList("https://musica-insper.com/roles");
 
