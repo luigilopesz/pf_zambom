@@ -35,6 +35,13 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.38</version>
+      <scope>provided</scope>
+    </dependency>
+
 
     <!-- MongoDB -->
     <dependency>
@@ -70,6 +77,19 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.38</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
 
       <!-- Jacoco para cobertura de testes -->
       <plugin>
@@ -78,28 +98,21 @@
         <version>0.8.12</version>
         <executions>
           <execution>
-            <id>pre-test</id>
+            <id>prepare-agent</id>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
-            <configuration>
-              <propertyName>jacocoArgLine</propertyName>
-              <destFile>${project.test.result.directory}/jacoco/jacoco.exec</destFile>
-            </configuration>
           </execution>
           <execution>
-            <id>post-test</id>
-            <phase>test</phase>
+            <id>report</id>
+            <phase>verify</phase>
             <goals>
               <goal>report</goal>
             </goals>
-            <configuration>
-              <dataFile>${project.test.result.directory}/jacoco/jacoco.exec</dataFile>
-              <outputDirectory>${project.test.result.directory}/jacoco</outputDirectory>
-            </configuration>
           </execution>
         </executions>
       </plugin>
+      
 
       <!-- Surefire para execução dos testes -->
       <plugin>
@@ -107,8 +120,8 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.3.1</version>
         <configuration>
-          <argLine>${jacocoArgLine}</argLine>
-          <reportsDirectory>${project.test.result.directory}/surefire</reportsDirectory>
+          <propertyName>jacocoArgLine</propertyName>
+          <destFile>...</destFile>
         </configuration>
       </plugin>
     </plugins>

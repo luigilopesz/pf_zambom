@@ -44,7 +44,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter delegate = new JwtGrantedAuthoritiesConverter();
         delegate.setAuthorityPrefix("ROLE_");
-        delegate.setAuthoritiesClaimName("https://pf_zambom/roles");
+        delegate.setAuthoritiesClaimName("https://musica-insper.com/roles");
 
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
         converter.setJwtGrantedAuthoritiesConverter(delegate);
